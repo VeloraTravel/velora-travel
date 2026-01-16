@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Velora Travel and Tour - 维乐旅游 | 专业旅行服务</title>
+    <meta name="description" content="Velora Travel and Tour提供专业的中国、中国台湾、越南、泰国等旅游服务，专业领队导游，豪华住宿，一站式旅行体验。">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* 基础样式 */
+        :root {
+            --primary: #0A2463;
+            --secondary: #3E92CC;
+            --light: #f8f9fa;
+            --dark: #1d1d1f;
+            --gray: #666;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', 'PingFang SC', 'Segoe UI', sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* 顶部联系栏 */
+        .top-bar {
+            background: var(--primary);
+            color: white;
+            padding: 10px 0;
+            font-size: 14px;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .phone {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .phone a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+        }
+        
+        .whatsapp-btn {
+            background: #25D366;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        /* 导航栏 */
+        .navbar {
+            background: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo-main {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: 1px;
+        }
+        
+        .logo-sub {
+            font-size: 14px;
+            color: var(--secondary);
+            margin-top: 2px;
+        }
+        
+        .logo-chinese {
+            font-size: 18px;
+            color: var(--primary);
+            font-weight: 600;
+            margin-top: 4px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+        
+        .nav-links a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--primary);
+            cursor: pointer;
+        }
+        
+        /* 英雄区域 */
+        .hero {
+            background: linear-gradient(rgba(10, 36, 99, 0.85), rgba(10, 36, 99, 0.9));
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            border: none;
+        }
+        
+        .btn-primary {
+            background: var(--secondary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #2a7bb8;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(62, 146, 204, 0.3);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-2px);
+        }
+        
+        /* 特色服务 */
+        .features {
+            padding: 60px 0;
+            background: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background: var(--light);
+            padding: 40px 30px;
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .feature-icon {
+            font-size: 48px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            font-size: 24px;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .feature-card p {
+            color: var(--gray);
+            line-height: 1.8;
+        }
+        
+        /* 目的地 */
+        .destinations {
+            padding: 60px 0;
+            background: var(--light);
+        }
+        
+        .destinations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .destination-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+        
+        .destination-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .destination-image {
+            height: 200px;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .destination-content {
+            padding: 25px;
+        }
+        
+        .destination-content h3 {
+            font-size: 22px;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .destination-content ul {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+        
+        .destination-content li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+        
+        .destination-content li:before {
+            content: "✓";
+            color: var(--secondary);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        /* 预订表单 */
+        .booking {
+            padding: 60px 0;
+            background: white;
+        }
+        
+        .booking-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--light);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--secondary);
+        }
+        
+        /* 底部 */
+        .footer {
+            background: var(--primary);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .contact-details {
+            list-style: none;
+        }
+        
+        .contact-details li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        
+        .contact-details i {
+            color: var(--secondary);
+            margin-top: 3px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #aaa;
+            font-size: 14px;
+        }
+        
+        /* 移动端适配 */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+            
+            .hero {
+                padding: 60px 20px;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .booking-form {
+                padding: 30px 20px;
+            }
+        }
+        
+        /* 动画 */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部联系栏 -->
+    <div class="top-bar">
+        <div class="container contact-info">
+            <div class="phone">
+                <i class="fas fa-phone"></i>
+                <a href="tel:+60162255311">+60 16-225 5311</a>
+            </div>
+            <a href="https://wa.me/60162255311?text=您好，我对Velora Travel的旅游产品感兴趣，请联系我。" class="whatsapp-btn">
+                <i class="fab fa-whatsapp"></i> WhatsApp咨询
+            </a>
+        </div>
+    </div>
+    
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="container nav-content">
+            <div class="logo">
+                <div class="logo-main">VELORA TRAVEL</div>
+                <div class="logo-sub">TRAVEL AND TOUR SERVICE</div>
+                <div class="logo-chinese">维乐旅游</div>
+            </div>
+            
+            <div class="nav-links">
+                <a href="#home">首页</a>
+                <a href="#destinations">目的地</a>
+                <a href="#features">特色服务</a>
+                <a href="#booking">立即预订</a>
+                <a href="#contact">联系我们</a>
+            </div>
+            
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+    
+    <!-- 英雄区域 -->
+    <section class="hero" id="home">
+        <div class="container fade-in">
+            <h1>探索世界，与维乐同行</h1>
+            <p>专业领队导游 · 豪华住宿体验 · 一站式旅行服务<br>为您打造难忘的旅行体验</p>
+            <div class="cta-buttons">
+                <a href="#destinations" class="btn btn-primary">探索目的地</a>
+                <a href="#booking" class="btn btn-secondary">咨询行程</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 特色服务 -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>我们的特色服务</h2>
+                <p>Velora Travel 致力于提供最高品质的旅行体验</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3>专业领队和导游</h3>
+                    <p>资深中文导游，熟悉当地文化历史，提供深度讲解与贴心服务，让您的旅程更加丰富多彩。</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-hotel"></i>
+                    </div>
+                    <h3>豪华住宿体验</h3>
+                    <p>精心挑选四星以上酒店及特色度假村，确保舒适优质的住宿环境，让您在旅途中得到充分休息。</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-concierge-bell"></i>
+                    </div>
+                    <h3>一站式服务</h3>
+                    <p>行程规划、签证协助、交通安排、餐饮预订，全程无忧旅行体验，让您专注于享受旅程。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 目的地 -->
+    <section class="destinations" id="destinations">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>热门旅游目的地</h2>
+                <p>精选亚洲热门旅游目的地，满足不同旅行需求</p>
+            </div>
+            
+            <div class="destinations-grid">
+                <div class="destination-card fade-in">
+                    <div class="destination-image" style="background: linear-gradient(135deg, #d32f2f, #f44336);">
+                        中国旅游
+                    </div>
+                    <div class="destination-content">
+                        <h3>中国旅游</h3>
+                        <p>探索中华五千年文明，从长城到江南水乡</p>
+                        <ul>
+                            <li>北京故宫长城7日游</li>
+                            <li>江南水乡古镇5日游</li>
+                            <li>云南大理丽江6日游</li>
+                            <li>西藏圣城朝圣8日游</li>
+                        </ul>
+                        <a href="#booking" class="btn btn-primary" style="padding: 10px 20px; font-size: 16px;">咨询详情</a>
+                    </div>
+                </div>
+                
+                <div class="destination-card fade-in">
+                    <div class="destination-image" style="background: linear-gradient(135deg, #1976d2, #2196f3);">
+                        中国台湾
+                    </div>
+                    <div class="destination-content">
+                        <h3>中国台湾</h3>
+                        <p>宝岛风情，美食文化之旅</p>
+                        <ul>
+                            <li>台北美食购物5日游</li>
+                            <li>环岛全景8日游</li>
+                            <li>阿里山日月潭4日游</li>
+                            <li>花莲太鲁阁3日游</li>
+                        </ul>
+                        <a href="#booking" class="btn btn-primary" style="padding: 10px 20px; font-size: 16px;">咨询详情</a>
+                    </div>
+                </div>
+                
+                <div class="destination-card fade-in">
+                    <div class="destination-image" style="background: linear-gradient(135deg, #388e3c, #4caf50);">
+                        越南
+                    </div>
+                    <div class="destination-content">
+                        <h3>越南</h3>
+                        <p>法式风情与东方韵味的完美结合</p>
+                        <ul>
+                            <li>河内下龙湾5日游</li>
+                            <li>胡志明市美奈4日游</li>
+                            <li>岘港会安6日游</li>
+                            <li>全境深度10日游</li>
+                        </ul>
+                        <a href="#booking" class="btn btn-primary" style="padding: 10px 20px; font-size: 16px;">咨询详情</a>
+                    </div>
+                </div>
+                
+                <div class="destination-card fade-in">
+                    <div class="destination-image" style="background: linear-gradient(135deg, #f57c00, #ff9800);">
+                        泰国
+                    </div>
+                    <div class="destination-content">
+                        <h3>泰国</h3>
+                        <p>微笑国度，佛教文化与海岛度假</p>
+                        <ul>
+                            <li>曼谷芭堤雅6日游</li>
+                            <li>普吉岛度假5日游</li>
+                            <li>清迈清莱文化5日游</li>
+                            <li>苏梅岛休闲4日游</li>
+                        </ul>
+                        <a href="#booking" class="btn btn-primary" style="padding: 10px 20px; font-size: 16px;">咨询详情</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 预订表单 -->
+    <section class="booking" id="booking">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>咨询或预订行程</h2>
+                <p>填写以下信息，我们的旅行顾问将尽快联系您</p>
+            </div>
+            
+            <div class="booking-form fade-in">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">姓名 *</label>
+                        <input type="text" id="name" placeholder="请输入您的姓名" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">联系电话 *</label>
+                        <input type="tel" id="phone" placeholder="请输入您的电话号码" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">电子邮箱</label>
+                        <input type="email" id="email" placeholder="请输入您的电子邮箱">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="destination">感兴趣的目的地</label>
+                        <select id="destination">
+                            <option value="">请选择目的地</option>
+                            <option value="china">中国</option>
+                            <option value="taiwan">中国台湾</option>
+                            <option value="vietnam">越南</option>
+                            <option value="thailand">泰国</option>
+                            <option value="other">其他目的地</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">具体要求或问题</label>
+                        <textarea id="message" rows="4" placeholder="请告诉我们您的具体需求，如出行时间、人数、预算等"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">提交咨询</button>
+                    
+                    <div style="text-align: center; margin-top: 20px;">
+                        <p style="margin-bottom: 15px; color: var(--gray);">或直接联系我们：</p>
+                        <a href="https://wa.me/60162255311?text=您好，我对Velora Travel的旅游产品感兴趣，请联系我。" 
+                           class="btn btn-secondary" 
+                           style="background: #25D366; border-color: #25D366;">
+                            <i class="fab fa-whatsapp"></i> WhatsApp咨询
+                        </a>
+                        <a href="tel:+60162255311" class="btn btn-secondary" style="margin-top: 10px;">
+                            <i class="fas fa-phone"></i> 电话咨询
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 底部 -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section fade-in">
+                    <h3>VELORA TRAVEL</h3>
+                    <p style="margin-bottom: 20px; color: #ccc;">专业旅行服务公司，专注于提供高品质的亚洲旅行体验。</p>
+                    <ul class="contact-details">
+                        <li><i class="fas fa-phone"></i> +60 16-225 5311</li>
+                        <li><i class="fas fa-envelope"></i> info@veloratravel.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 马来西亚吉隆坡</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section fade-in">
+                    <h3>热门目的地</h3>
+                    <ul class="footer-links">
+                        <li><a href="#destinations">中国旅游</a></li>
+                        <li><a href="#destinations">中国台湾</a></li>
+                        <li><a href="#destinations">越南</a></li>
+                        <li><a href="#destinations">泰国</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section fade-in">
+                    <h3>快速链接</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">首页</a></li>
+                        <li><a href="#destinations">目的地</a></li>
+                        <li><a href="#features">特色服务</a></li>
+                        <li><a href="#booking">立即预订</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright fade-in">
+                <p>&copy; 2024 Velora Travel and Tour. 维乐旅游 版权所有。</p>
+                <p style="margin-top: 10px; font-size: 16px;">专业领队和导游 · 豪华住宿体验 · 一站式旅行服务</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // 移动端菜单切换
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+            
+            // 切换图标
+            const icon = this.querySelector('i');
+            if (icon.classList.contains('fa-bars')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // 点击菜单项关闭菜单（移动端）
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 768) {
+                    document.querySelector('.nav-links').classList.remove('active');
+                    document.querySelector('.mobile-menu-btn i').classList.remove('fa-times');
+                    document.querySelector('.mobile-menu-btn i').classList.add('fa-bars');
+                }
+            });
+        });
+        
+        // 表单提交
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const destination = document.getElementById('destination').value;
+            
+            // 构建WhatsApp消息
+            const whatsappMessage = `姓名: ${name}%0A电话: ${phone}%0A目的地: ${destination}%0A留言: ${document.getElementById('message').value}`;
+            
+            // 显示确认信息
+            alert(`感谢 ${name} 的咨询！\n\n我们将尽快通过电话 ${phone} 联系您。\n\n您也可以直接通过WhatsApp联系我们。`);
+            
+            // 在实际应用中，这里会发送数据到服务器
+            // fetch('/api/contact', { method: 'POST', body: new FormData(this) });
+            
+            // 重置表单
+            this.reset();
+            
+            // 更新WhatsApp链接
+            const whatsappBtn = document.querySelector('a[href^="https://wa.me/"]');
+            whatsappBtn.href = `https://wa.me/60162255311?text=${whatsappMessage}`;
+        });
+        
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    e.preventDefault();
+                    
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // 动画效果
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+        
+        // 观察所有需要动画的元素
+        document.querySelectorAll('.section-title, .feature-card, .destination-card, .booking-form, .footer-section, .copyright').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // 页面加载时添加初始动画
+        window.addEventListener('load', () => {
+            document.querySelector('.hero .fade-in').classList.add('fade-in');
+        });
+    </script>
+</body>
+</html>
